@@ -4,6 +4,7 @@ module chamaeleon_token_experiment::chamaeleon {
 
   public struct CHAMAELEON has drop {}
 
+  #[allow(lint(share_owned))]
   fun init(witness: CHAMAELEON, ctx: &mut TxContext) {
     let (treasury, metadata) = coin::create_currency(witness, 6, b"CHAMAELEON", b"", b"", option::none(), ctx);
     transfer::public_transfer(treasury, ctx.sender());
